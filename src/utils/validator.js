@@ -1,13 +1,17 @@
 const { body, validationResult } = require('express-validator');
 
 const registerUserRulesInterceptor = () => [
-  body('email', 'Must be a valid email').isEmail().notEmpty(),
-  body('name', 'Name is required').notEmpty(),
-  body('password', 'Password is required').notEmpty(),
+  body('email')
+    .notEmpty()
+    .withMessage('Email is required')
+    .isEmail()
+    .withMessage('Must be a valid email'),
+  body('name').notEmpty().withMessage('Name is required'),
+  body('password').notEmpty().withMessage('Password is required'),
 ];
 
 const updateUserRulesInterceptor = () => [
-  body('email', 'Must be a valid email').isEmail(),
+  body('email').isEmail().withMessage('Must be a valid email'),
 ];
 
 const validateRules = (req, res, next) => {
