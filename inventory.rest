@@ -1,0 +1,29 @@
+### Get All Users
+GET http://localhost:8080/v1/users HTTP/1.1
+
+### Get User
+GET http://localhost:8080/v1/users/67de5f74ecd888586210af37 HTTP/1.1
+
+### Create User
+POST http://localhost:8080/v1/users HTTP/1.1
+content-type: application/json
+
+{
+  "name": "John Dow",
+  "email": "john.dow2@email.com",
+  "password": "password123"
+}
+
+### Update User
+PUT http://localhost:8080/v1/users/67de5f74ecd888586210af37 HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Jonny Rocket",
+  "email": "jonny.rocket@email.com",
+  "password": "password1234"
+}
+
+### Delete User
+DELETE http://localhost:8080/v1/users/67de68db3b9faa57b267810c HTTP/1.1
+
