@@ -3,15 +3,20 @@ const cors = require('cors');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const swaggerUI = require('swagger-ui-express');
+const session = require('express-session');
 
-const { PORT } = require('./src/utils/const.env');
+const { PORT, SECRET } = require('./src/utils/const.env');
 const mongodb = require('./src/database/connect');
 const swaggerSpec = require('./src/docs/apiDoc');
 const landingRouter = require('./src/routes/landingPage');
+const passport = require('./src/helpers/passport');
 
 const port = PORT || 8080;
 
 const app = express();
+app.use(session({ secret: SECRET, resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
