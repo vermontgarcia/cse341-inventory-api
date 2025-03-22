@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Name is required'],
     },
-    username: {
+    email: {
       type: String,
       required: [true, 'Email is required'],
       unique: [true, 'Email aready registered'],
@@ -21,6 +21,6 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
-UserSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
 module.exports = mongoose.model('User', UserSchema);
