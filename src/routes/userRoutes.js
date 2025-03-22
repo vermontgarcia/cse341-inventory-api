@@ -15,6 +15,8 @@ const userRouter = express.Router();
  *   get:
  *     summary: Get all users
  *     description: Get a list of all users.
+ *     tags:
+ *       - Users
  *     responses:
  *       200:
  *         description: Users fetched successfully.
@@ -37,6 +39,8 @@ userRouter.get('/', getAllUsers);
  *   get:
  *     summary: Get single user
  *     description: Fetch a single user by its id.
+ *     tags:
+ *       - Users
  *     parameters:
  *       - in: path
  *         name: id
@@ -70,17 +74,19 @@ userRouter.get('/:id', getUser);
  * @swagger
  * /v1/users:
  *   post:
- *     summary: Create new user
- *     description: Create new user based on data provided.
+ *     summary: Register new user
+ *     description: Register new user based on data provided.
+ *     tags:
+ *       - Users
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: "#/components/schemas/CreateUserBody"
+ *             $ref: "#/components/schemas/RegisterUserBody"
  *     responses:
- *       200:
- *         description: User fetched successfully.
+ *       201:
+ *         description: User registered successfully.
  *         content:
  *           application/json:
  *             schema:
@@ -106,6 +112,8 @@ userRouter.post('/', registerUser);
  *   put:
  *     summary: Update user
  *     description: Update user based on data provided and its id.
+ *     tags:
+ *       - Users
  *     parameters:
  *       - in: path
  *         name: id
@@ -147,6 +155,8 @@ userRouter.put('/:id', updateUser);
  *   delete:
  *     summary: Delete user
  *     description: Delete a specific user by its id.
+ *     tags:
+ *       - Users
  *     parameters:
  *       - in: path
  *         name: id
