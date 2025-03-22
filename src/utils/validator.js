@@ -14,6 +14,10 @@ const updateUserRulesInterceptor = () => [
   body('email').isEmail().withMessage('Must be a valid email'),
 ];
 
+const createUpdateBrandRulesInterceptor = () => [
+  body('name').notEmpty().withMessage('Name is required'),
+];
+
 const validateRules = (req, res, next) => {
   const validationErrors = validationResult(req);
   if (validationErrors.isEmpty()) {
@@ -28,5 +32,6 @@ const validateRules = (req, res, next) => {
 module.exports = {
   registerUserRulesInterceptor,
   updateUserRulesInterceptor,
+  createUpdateBrandRulesInterceptor,
   validateRules,
 };

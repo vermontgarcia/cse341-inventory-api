@@ -6,6 +6,10 @@ const {
   updateBrand,
   deleteBrand,
 } = require('../controllers/brandController');
+const {
+  createUpdateBrandRulesInterceptor,
+  validateRules,
+} = require('../utils/validator');
 
 const brandRouter = express.Router();
 
@@ -104,7 +108,12 @@ brandRouter.get('/:id', getBrand);
  *             schema:
  *               $ref: "#/components/schemas/ServerError"
  */
-brandRouter.post('/', createBrand);
+brandRouter.post(
+  '/',
+  createUpdateBrandRulesInterceptor(),
+  validateRules,
+  createBrand
+);
 
 /**
  * @swagger
@@ -147,7 +156,12 @@ brandRouter.post('/', createBrand);
  *             schema:
  *               $ref: "#/components/schemas/ServerError"
  */
-brandRouter.put('/:id', updateBrand);
+brandRouter.put(
+  '/:id',
+  createUpdateBrandRulesInterceptor(),
+  validateRules,
+  updateBrand
+);
 
 /**
  * @swagger
