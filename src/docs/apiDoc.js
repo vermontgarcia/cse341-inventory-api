@@ -140,7 +140,7 @@ const options = {
             },
           },
         },
-        CreateUserBody: {
+        RegisterUserBody: {
           type: 'object',
           properties: {
             name: {
@@ -158,6 +158,16 @@ const options = {
               type: 'string',
               required: true,
               example: 'myP5ssw0rd!',
+            },
+          },
+        },
+        BrandBody: {
+          type: 'object',
+          properties: {
+            name: {
+              required: true,
+              type: 'string',
+              example: 'Mission Pride',
             },
           },
         },
@@ -188,6 +198,16 @@ const options = {
             },
           },
         },
+        BrandErrorExample: {
+          type: 'object',
+          properties: {
+            brand: {
+              type: 'string',
+              required: true,
+              example: 'Brand is required',
+            },
+          },
+        },
         GetAllUsers: {
           type: 'object',
           properties: {
@@ -195,6 +215,17 @@ const options = {
               type: 'array',
               items: {
                 $ref: '#/components/schemas/User',
+              },
+            },
+          },
+        },
+        GetAllBrands: {
+          type: 'object',
+          properties: {
+            brands: {
+              type: 'array',
+              items: {
+                $ref: '#/components/schemas/Brand',
               },
             },
           },
@@ -207,12 +238,29 @@ const options = {
             },
           },
         },
+        GetBrand: {
+          type: 'object',
+          properties: {
+            brand: {
+              $ref: '#/components/schemas/Brand',
+            },
+          },
+        },
         DeleteUser: {
           type: 'object',
           properties: {
             msg: {
               type: 'string',
               example: 'User deleted successfully',
+            },
+          },
+        },
+        DeleteBrand: {
+          type: 'object',
+          properties: {
+            msg: {
+              type: 'string',
+              example: 'Brand deleted successfully',
             },
           },
         },
@@ -238,6 +286,15 @@ const options = {
             },
           },
         },
+        BrandNotFound: {
+          type: 'object',
+          properties: {
+            msg: {
+              type: 'string',
+              example: 'Brand not found',
+            },
+          },
+        },
         UnprocessableContent: {
           type: 'object',
           properties: {
@@ -245,6 +302,17 @@ const options = {
               type: 'array',
               items: {
                 $ref: '#/components/schemas/ErrorExample',
+              },
+            },
+          },
+        },
+        BrandUnprocessableContent: {
+          type: 'object',
+          properties: {
+            errors: {
+              type: 'array',
+              items: {
+                $ref: '#/components/schemas/BrandErrorExample',
               },
             },
           },
