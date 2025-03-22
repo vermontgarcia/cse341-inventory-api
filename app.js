@@ -1,20 +1,30 @@
 const express = require('express');
 const cors = require('cors');
+const logger = require('morgan');
 const bodyParser = require('body-parser');
 const swaggerUI = require('swagger-ui-express');
 
+const { PORT } = require('./src/utils/const.env');
 const mongodb = require('./src/database/connect');
 const swaggerSpec = require('./src/docs/apiDoc');
-const { PORT } = require('./src/utils/const.env');
+const landingRouter = require('./src/routes/landingPage');
 
 const port = PORT || 8080;
 
 const app = express();
 app.use(cors());
+app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 // Add routes
+// Landing Page
+app.use(express.static('src/public'));
+app.get('/', landingRouter);
+
+// Swagger Documentation
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+
+// API Routes
 
 // Initialize DB and Start Server
 mongodb.initDB((error) => {
