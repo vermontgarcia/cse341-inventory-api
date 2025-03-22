@@ -25,4 +25,4 @@ const WarehouseSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model('User', WarehouseSchema);
+module.exports = mongoose.model('Warehouse', WarehouseSchema);
