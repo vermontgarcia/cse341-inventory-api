@@ -32,6 +32,14 @@ const options = {
               format: 'email',
               example: 'john.dow@email.com',
             },
+            createdAt: {
+              type: 'string',
+              example: '2025-03-22T06:57:03.719Z',
+            },
+            updatedAt: {
+              type: 'string',
+              example: '2025-03-22T06:57:03.719Z',
+            },
           },
         },
         Wharehouse: {
@@ -48,6 +56,14 @@ const options = {
             userId: {
               type: 'string',
               example: '67c921fe5c73a5b0fffdd325',
+            },
+            createdAt: {
+              type: 'string',
+              example: '2025-03-22T06:57:03.719Z',
+            },
+            updatedAt: {
+              type: 'string',
+              example: '2025-03-22T06:57:03.719Z',
             },
           },
         },
@@ -93,6 +109,14 @@ const options = {
               type: 'string',
               example: '67c921fe5c73a5b0fffdd325',
             },
+            createdAt: {
+              type: 'string',
+              example: '2025-03-22T06:57:03.719Z',
+            },
+            updatedAt: {
+              type: 'string',
+              example: '2025-03-22T06:57:03.719Z',
+            },
           },
         },
         Brand: {
@@ -105,6 +129,123 @@ const options = {
             name: {
               type: 'string',
               example: 'Mission Pride',
+            },
+            createdAt: {
+              type: 'string',
+              example: '2025-03-22T06:57:03.719Z',
+            },
+            updatedAt: {
+              type: 'string',
+              example: '2025-03-22T06:57:03.719Z',
+            },
+          },
+        },
+        CreateUserBody: {
+          type: 'object',
+          properties: {
+            name: {
+              required: true,
+              type: 'string',
+              example: 'John Dow',
+            },
+            email: {
+              type: 'string',
+              required: true,
+              format: 'email',
+              example: 'john.dow@email.com',
+            },
+            password: {
+              type: 'string',
+              required: true,
+              example: 'myP5ssw0rd!',
+            },
+          },
+        },
+        UpdateUserBody: {
+          type: 'object',
+          properties: {
+            name: {
+              type: 'string',
+              example: 'John Dow',
+            },
+            email: {
+              type: 'string',
+              format: 'email',
+              example: 'john.dow@email.com',
+            },
+            password: {
+              type: 'string',
+              example: 'myP5ssw0rd!',
+            },
+          },
+        },
+        ErrorExample: {
+          type: 'object',
+          properties: {
+            email: {
+              type: 'string',
+              example: 'Must be a valid email',
+            },
+          },
+        },
+        GetAllUsers: {
+          type: 'object',
+          properties: {
+            users: {
+              type: 'array',
+              items: {
+                $ref: '#/components/schemas/User',
+              },
+            },
+          },
+        },
+        GetUser: {
+          type: 'object',
+          properties: {
+            user: {
+              $ref: '#/components/schemas/User',
+            },
+          },
+        },
+        DeleteUser: {
+          type: 'object',
+          properties: {
+            msg: {
+              type: 'string',
+              example: 'User deleted successfully',
+            },
+          },
+        },
+        ServerError: {
+          type: 'object',
+          properties: {
+            error: {
+              type: 'object',
+              properties: {
+                error: {
+                  type: 'object',
+                },
+              },
+            },
+          },
+        },
+        UserNotFound: {
+          type: 'object',
+          properties: {
+            msg: {
+              type: 'string',
+              example: 'User not found',
+            },
+          },
+        },
+        UnprocessableContent: {
+          type: 'object',
+          properties: {
+            errors: {
+              type: 'array',
+              items: {
+                $ref: '#/components/schemas/ErrorExample',
+              },
             },
           },
         },
