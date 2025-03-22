@@ -109,7 +109,12 @@ userRouter.get('/:id', getUser);
  *             schema:
  *               $ref: "#/components/schemas/ServerError"
  */
-userRouter.post('/', registerUserRulesInterceptor, validateRules, registerUser);
+userRouter.post(
+  '/',
+  registerUserRulesInterceptor(),
+  validateRules,
+  registerUser
+);
 
 /**
  * @swagger
@@ -152,7 +157,7 @@ userRouter.post('/', registerUserRulesInterceptor, validateRules, registerUser);
  *             schema:
  *               $ref: "#/components/schemas/ServerError"
  */
-userRouter.put('/:id', updateUserRulesInterceptor, validateRules, updateUser);
+userRouter.put('/:id', updateUserRulesInterceptor(), validateRules, updateUser);
 
 /**
  * @swagger
