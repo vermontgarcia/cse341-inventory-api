@@ -1,8 +1,13 @@
 const { body, validationResult } = require('express-validator');
 
-const createUserRulesInterceptor = () => [
+const registerUserRulesInterceptor = () => [
+  body('email', 'Must be a valid email').isEmail().notEmpty(),
+  body('name', 'Name is required').notEmpty(),
+  body('password', 'Password is required').notEmpty(),
+];
+
+const updateUserRulesInterceptor = () => [
   body('email', 'Must be a valid email').isEmail(),
-  body('firstName', 'First name is required').notEmpty(),
 ];
 
 const validateRules = (req, res, next) => {
@@ -17,6 +22,7 @@ const validateRules = (req, res, next) => {
 };
 
 module.exports = {
-  createUserRulesInterceptor,
+  registerUserRulesInterceptor,
+  updateUserRulesInterceptor,
   validateRules,
 };

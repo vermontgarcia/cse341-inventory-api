@@ -6,6 +6,11 @@ const {
   updateUser,
   deleteUser,
 } = require('../controllers/userController');
+const {
+  registerUserRulesInterceptor,
+  validateRules,
+  updateUserRulesInterceptor,
+} = require('../utils/validator');
 
 const userRouter = express.Router();
 
@@ -104,11 +109,11 @@ userRouter.get('/:id', getUser);
  *             schema:
  *               $ref: "#/components/schemas/ServerError"
  */
-userRouter.post('/', registerUser);
+userRouter.post('/', registerUserRulesInterceptor, validateRules, registerUser);
 
 /**
  * @swagger
- * /v1/users:
+ * /v1/users/{id}:
  *   put:
  *     summary: Update user
  *     description: Update user based on data provided and its id.
@@ -147,7 +152,7 @@ userRouter.post('/', registerUser);
  *             schema:
  *               $ref: "#/components/schemas/ServerError"
  */
-userRouter.put('/:id', updateUser);
+userRouter.put('/:id', updateUserRulesInterceptor, validateRules, updateUser);
 
 /**
  * @swagger
