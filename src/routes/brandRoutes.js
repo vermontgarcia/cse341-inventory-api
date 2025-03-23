@@ -15,6 +15,13 @@ const brandRouter = express.Router();
 
 /**
  * @swagger
+ * tags:
+ *   - name: Brands
+ *     description: Brand management
+ */
+
+/**
+ * @swagger
  * /v1/brands:
  *   get:
  *     summary: Get all brands
