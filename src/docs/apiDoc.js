@@ -9,6 +9,10 @@ const options = {
       version: '1.0.0',
       description: 'API documentation for managing inventory of products',
     },
+    tags: [
+      { name: 'Users', description: 'Operations related to users' },
+      { name: 'Brands', description: 'Operations related to brands' },
+    ],
     servers: [
       {
         url: SERVER_URL,
