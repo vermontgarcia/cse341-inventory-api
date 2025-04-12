@@ -19,6 +19,29 @@ const options = {
       },
     ],
     components: {
+      securitySchemes: {
+        OAuth2GitHub: {
+          type: 'oauth2',
+          description: 'OAuth 2.0 using GitHub',
+          flows: {
+            authorizationCode: {
+              authorizationUrl: 'https://github.com/login/oauth/authorize',
+              tokenUrl: 'https://github.com/login/oauth/access_token',
+              redirectUrl: 'https://your-app.com/oauth2/callback',
+              scopes: {
+                'user:email': 'Read user profile information',
+              },
+            },
+          },
+        },
+        // BearerAuth: {
+        //   type: 'http',
+        //   scheme: 'bearer',
+        //   bearerFormat: 'JWT', // GitHub returns an OAuth access token, not a JWT
+        //   description:
+        //     'Use the access token received from the server after GitHub login',
+        // },
+      },
       schemas: {
         User: {
           type: 'object',
@@ -271,13 +294,15 @@ const options = {
         ServerError: {
           type: 'object',
           properties: {
-            error: {
-              type: 'object',
-              properties: {
-                error: {
-                  type: 'object',
-                },
-              },
+            status: {
+              type: 'integer',
+              example: 500,
+              description: 'HTTP status code',
+            },
+            message: {
+              type: 'string',
+              example: 'Internal server error',
+              description: 'Description of the error',
             },
           },
         },
@@ -325,6 +350,7 @@ const options = {
     },
   },
   apis: ['./src/routes/*.js'],
+  security: [{ OAuth2GitHub: [] }],
 };
 
 const swaggerSpec = swaggerJsDoc(options);

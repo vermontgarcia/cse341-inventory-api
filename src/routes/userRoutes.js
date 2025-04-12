@@ -10,7 +10,8 @@ const {
   registerUserRulesInterceptor,
   validateRules,
   updateUserRulesInterceptor,
-} = require('../utils/validator');
+} = require('../middleware/validator');
+const { isAuthenticated } = require('../middleware/authenticate');
 
 const userRouter = express.Router();
 
@@ -43,7 +44,7 @@ const userRouter = express.Router();
  *             schema:
  *               $ref: "#/components/schemas/ServerError"
  */
-userRouter.get('/', getAllUsers);
+userRouter.get('/', isAuthenticated, getAllUsers);
 
 /**
  * @swagger
@@ -80,7 +81,7 @@ userRouter.get('/', getAllUsers);
  *             schema:
  *               $ref: "#/components/schemas/ServerError"
  */
-userRouter.get('/:id', getUser);
+userRouter.get('/:id', isAuthenticated, getUser);
 
 /**
  * @swagger
@@ -118,6 +119,7 @@ userRouter.get('/:id', getUser);
  */
 userRouter.post(
   '/',
+  isAuthenticated,
   registerUserRulesInterceptor(),
   validateRules,
   registerUser
@@ -164,7 +166,13 @@ userRouter.post(
  *             schema:
  *               $ref: "#/components/schemas/ServerError"
  */
-userRouter.put('/:id', updateUserRulesInterceptor(), validateRules, updateUser);
+userRouter.put(
+  '/:id',
+  isAuthenticated,
+  updateUserRulesInterceptor(),
+  validateRules,
+  updateUser
+);
 
 /**
  * @swagger
@@ -201,6 +209,6 @@ userRouter.put('/:id', updateUserRulesInterceptor(), validateRules, updateUser);
  *             schema:
  *               $ref: "#/components/schemas/ServerError"
  */
-userRouter.delete('/:id', deleteUser);
+userRouter.delete('/:id', isAuthenticated, deleteUser);
 
 module.exports = userRouter;

@@ -3,175 +3,174 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inventory API</title>
-    <link rel="stylesheet" href="/css/index.css" />
-    <script type="module" src="/scripts/index.js"></script>
+    <title>Inventory API | Vermont Garcia</title>
+    <meta name="author" content="Vermont Garcia" />
+    <meta name="description" content="Inventory API - CSE341 Web Services" />
+    <meta property="og:title" content="Inventory API for CSE341 Web Services" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="REST API for Inventory Control! #RESTAPI #WebService"
+    />
+    <meta
+      property="og:url"
+      content="https://cse341-inventory-api.onrender.com"
+    />
+    <!-- <meta
+      property="og:image"
+      content="https://vermontgarcia.github.io/wdd231/chamber/images/site/hero-medium.webp"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/large.css" />
+    <script src="scripts/layout.js" type="module"></script>
+    <script type="module" src="scripts/index.js"></script>
   </head>
-
   <body>
     <header>
-      <a> Contact Us </a>
-      <img
-        src="//v.fastcdn.co/t/e6c956c2/d0574621/1735371633-64774887-95x38x95x44x0x3-Logo-black-12x.png"
-      />
+      <div>
+        <div class="logo-container">
+          <img
+            src="images/logo.svg"
+            alt="Provo Chamber of Commerce Logo"
+            width="64"
+            height="64"
+          />
+          <div class="logo-name-container">
+            <p>Intentory API</p>
+            <p>Version 1.0</p>
+          </div>
+        </div>
+        <div class="menu-btn">
+          <a id="menu-btn" role="button" class="menu-icon">
+            <i id="menu-icon" class="material-icons">menu</i>
+          </a>
+        </div>
+      </div>
+      <nav class="menu" id="menu">
+        <a href="index.html">Home</a>
+        <a href="/api-docs">Swagger Docs</a>
+        <a href="index.html">Get Started</a>
+        <a class="active" href="index.html">Login</a>
+      </nav>
     </header>
     <main>
-      <section>
-        <div>
-          <h1>Master Your Inventory Today</h1>
-
-          <p>Optimize stock levels and streamline operations effortlessly.</p>
-
-          <a> Get Started </a>
-        </div>
-        <img src="" alt="wharehouse" />
-      </section>
-
-      <section>
-        <div>
-          <h2>100+</h2>
-          <p>Thriving Startups</p>
-        </div>
-        <div>
-          <h2>500+</h2>
-          <p>Consulting Hours</p>
-        </div>
-        <div>
-          <h2>20</h2>
-          <p>Market Sectors</p>
-        </div>
-      </section>
-
-      <section>
-        <div>
-          <div>
-            <h5>FEATURES</h5>
+      <div class="hero">
+        <picture>
+          <source media="(min-width: 1000px)" srcset="images/hero-large.webp" />
+          <source media="(min-width: 500px)" srcset="images/hero-medium.webp" />
+          <img
+            src="images/hero-small.webp"
+            alt="Hero image"
+            width="500"
+            height="313"
+          />
+        </picture>
+        <div class="call-to-action">Try it Now</div>
+      </div>
+      <!-- Login Page Content -->
+      <div class="thankyou">
+        <section>
+          <h1>Login</h1>
+          <div id="login">
+            <form class="form" action="/account/login" method="post">
+              <fieldset>
+                <label
+                  >Email<span class="required">*</span>
+                  <input
+                    type="email"
+                    name="acc_email"
+                    id="email"
+                    required
+                    autocomplete
+                  />
+                </label>
+                <label id="password-field"
+                  >Password<span class="required">*</span>
+                  <input
+                    type="password"
+                    name="acc_password"
+                    id="password"
+                    required
+                  />
+                  <img
+                    src="/images/eye-close.png"
+                    alt="eye close icon"
+                    id="eye-icon"
+                  />
+                </label>
+              </fieldset>
+              <fieldset class="submit-btn-container">
+                <input type="submit" role="button" value="Login" />
+              </fieldset>
+              <!-- <div>
+                <p>No account? <a href="/account/signup">Sign Up</a></p>
+              </div> -->
+            </form>
           </div>
+        </section>
+        <section>
           <div>
-            <h2>Smart Control</h2>
+            <h3>Or</di>
           </div>
-        </div>
-
-        <div>
-          <img
-            width="100"
-            height="100"
-            src="//v.fastcdn.co/u/e6c956c2/64774763-0-brooke-cagle--uHVRvD.jpg"
-          />
+        </section>
+        <section>
           <div>
-            <h3>Track</h3>
-            <p>Monitor stock levels in real-time for better decision-making.</p>
+            <form class="form" action="/auth/github/login">
+              <fieldset class="submit-btn-container">
+                <input type="submit" role="button" value="Login with GitHub" />
+                <!-- <a href="/auth/github/login">Login</a> -->
+              </fieldset>
+            </form>
           </div>
-        </div>
-
-        <div>
-          <div>
-            <h3>Sync</h3>
-            <p>Integrate seamlessly with existing systems for efficiency.</p>
-          </div>
-          <img
-            width="100"
-            height="100"
-            src="//v.fastcdn.co/u/e6c956c2/64767334-0-true-agency-JwP90y9w.jpg"
-          />
-        </div>
-        <div>
-          <a> Try It Out </a>
-        </div>
-      </section>
-
-      <section>
-        <p>VIDEO</p>
-        <h2>Manage Inventory</h2>
-        <h3>Learn to efficiently track and control your inventory.</h3>
-        <div>
-          <img
-            width="100"
-            height="100"
-            src="//v.fastcdn.co/u/e6c956c2/64808002-0-priscilla-du-preez-O.jpg"
-          />
-          <img
-            width="100"
-            height="100"
-            alt=""
-            src="//v.fastcdn.co/u/6430ff65/47752815-0-ic-play-circle-fille.svg"
-          />
-        </div>
-        <h5>TRUSTED BY</h5>
-        <div style="background-color: darkolivegreen">
-          <img
-            alt=""
-            src="//v.fastcdn.co/t/e6c956c2/d0574621/1735371634-64762571-176x61x178x61x1x0-Logo-white-42x.png"
-          />
-          <img
-            alt=""
-            src="//v.fastcdn.co/t/e6c956c2/d0574621/1735371635-64762578-177x61x199x61x11x0-Logo-white-62x.png"
-          />
-          <img
-            alt=""
-            src="//v.fastcdn.co/t/e6c956c2/d0574621/1735371636-64762577-176x61x176x66x0x3-Logo-white-22x.png"
-          />
-          <img
-            alt=""
-            src="//v.fastcdn.co/t/e6c956c2/d0574621/1735371637-64762568-177x61-Logo-white-32x.png"
-          />
-          <img
-            alt=""
-            src="//v.fastcdn.co/t/e6c956c2/d0574621/1735371638-64762575-176x61x176x82x0x11-Logo-white-12x.png"
-          />
-        </div>
-      </section>
-
-      <section>
-        <img
-          width="100"
-          height="100"
-          src="//v.fastcdn.co/u/e6c956c2/64767335-0-brooke-cagle-NoRsyXm.jpg"
-        />
-
-        <div>
-          <p>
-            <em
-              >Decent software, and excelent mobile access which can boost your
-              productivity on-the-go.</em
-            >
-          </p>
-          <p>
-            – Mary&nbsp;Johnson, Founder &amp; CEO, TechNova Solutions&nbsp;
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <h2>Unlock Seamless Inventory Management Today!</h2>
-        <p>
-          Join us now to streamline your inventory processes and boost
-          efficiency. Click below to start your journey towards smarter control
-          and insights.
-        </p>
-
-        <form>
-          <label
-            >Email
-            <input
-              type="text"
-              name="Email"
-              value=""
-              title="Email"
-              placeholder="Email"
-              data-label-inside="Email"
-              required
-              aria-required="true"
-            />
-          </label>
-          <div>
-            <button>Discover</button>
-          </div>
-        </form>
-      </section>
+        </section>
+      </div>
+      <!-- -->
     </main>
-    <footer>
-      <p>Copyright © 2024. All rights reserved.</p>
+    <footer class="footer">
+      <div>
+        <p><strong>BYU-Idaho</strong></p>
+        <p>Pathway</p>
+        <!-- <p>Provo, Utah</p> -->
+        <!-- <p>info@provochamber.org</p> -->
+        <!-- <p>(000)999-9999</p> -->
+      </div>
+      <div class="social-media">
+        <a href="https://facebook.com" target="_blank">
+          <img
+            src="images/facebook.svg"
+            alt="facebook-icon"
+            width="32"
+            height="32"
+          />
+        </a>
+        <a href="https://twitter.com" target="_blank">
+          <img
+            src="images/twitter.svg"
+            alt="twitter-icon"
+            width="32"
+            height="32"
+          />
+        </a>
+        <a href="https://instagram.com" target="_blank">
+          <img
+            src="images/instagram.svg"
+            alt="instagram-icon"
+            width="32"
+            height="32"
+          />
+        </a>
+      </div>
+      <div>
+        <p>CSE341 Class Project</p>
+        <p>Vermont Garcia</p>
+        <p class="copyright">© <span id="current-year"></span> Inventory API</p>
+        <p id="last-modified"></p>
+      </div>
     </footer>
   </body>
 </html>

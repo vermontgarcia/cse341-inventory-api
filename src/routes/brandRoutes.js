@@ -9,7 +9,8 @@ const {
 const {
   createUpdateBrandRulesInterceptor,
   validateRules,
-} = require('../utils/validator');
+} = require('../middleware/validator');
+const { isAuthenticated } = require('../middleware/authenticate');
 
 const brandRouter = express.Router();
 
@@ -79,7 +80,7 @@ brandRouter.get('/', getAllBrands);
  *             schema:
  *               $ref: "#/components/schemas/ServerError"
  */
-brandRouter.get('/:id', getBrand);
+brandRouter.get('/:id', isAuthenticated, getBrand);
 
 /**
  * @swagger
@@ -117,6 +118,7 @@ brandRouter.get('/:id', getBrand);
  */
 brandRouter.post(
   '/',
+  isAuthenticated,
   createUpdateBrandRulesInterceptor(),
   validateRules,
   createBrand
@@ -165,6 +167,7 @@ brandRouter.post(
  */
 brandRouter.put(
   '/:id',
+  isAuthenticated,
   createUpdateBrandRulesInterceptor(),
   validateRules,
   updateBrand
@@ -205,6 +208,6 @@ brandRouter.put(
  *             schema:
  *               $ref: "#/components/schemas/ServerError"
  */
-brandRouter.delete('/:id', deleteBrand);
+brandRouter.delete('/:id', isAuthenticated, deleteBrand);
 
 module.exports = brandRouter;
