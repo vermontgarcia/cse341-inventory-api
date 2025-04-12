@@ -43,8 +43,11 @@ const getUser = async (req, res) => {
 
 const registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const userRaw = await User.register({ name, email }, password);
+    const { name, lastName, phone, address, state, email, password } = req.body;
+    const userRaw = await User.register(
+      { name, email, lastName, phone, address, state },
+      password
+    );
     if (userRaw) {
       const newUser = await User.findById(userRaw.id);
       const user = {

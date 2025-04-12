@@ -52,7 +52,23 @@ const options = {
             },
             name: {
               type: 'String',
-              example: 'John Dow',
+              example: 'John',
+            },
+            lastName: {
+              type: 'String',
+              example: 'Dow',
+            },
+            phone: {
+              type: 'String',
+              example: '8001234567',
+            },
+            address: {
+              type: 'String',
+              example: '123 Principal Street, Big City',
+            },
+            state: {
+              type: 'String',
+              example: 'UT',
             },
             email: {
               type: 'string',
@@ -173,7 +189,27 @@ const options = {
             name: {
               required: true,
               type: 'string',
-              example: 'John Dow',
+              example: 'Johnw',
+            },
+            lastName: {
+              required: true,
+              type: 'string',
+              example: 'Dow',
+            },
+            phone: {
+              required: false,
+              type: 'string',
+              example: '8001234567',
+            },
+            address: {
+              required: false,
+              type: 'string',
+              example: '123 Principal Street, Big City',
+            },
+            state: {
+              required: false,
+              type: 'string',
+              example: 'UT',
             },
             email: {
               type: 'string',

@@ -13,6 +13,26 @@ const UserSchema = new mongoose.Schema(
       // required: [true, 'Name is required'],
       sparse: true,
     },
+    lastName: {
+      type: String,
+      // required: [true, 'Name is required'],
+      sparse: true,
+    },
+    phone: {
+      type: String,
+      // required: [true, 'Name is required'],
+      sparse: true,
+    },
+    address: {
+      type: String,
+      // required: [true, 'Name is required'],
+      sparse: true,
+    },
+    state: {
+      type: String,
+      // required: [true, 'Name is required'],
+      sparse: true,
+    },
     email: {
       type: String,
       // required: [true, 'Email is required'],
