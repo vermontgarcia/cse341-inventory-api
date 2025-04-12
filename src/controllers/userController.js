@@ -67,11 +67,11 @@ const registerUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   const { id } = req.params;
-  const { name, email, password } = req.body;
+  const { name, lastName, phone, address, state, email, password } = req.body;
   try {
     const userRaw = await User.findByIdAndUpdate(
       id,
-      { name, email, password },
+      { name, lastName, phone, address, state, email, password },
       {
         new: true,
       }

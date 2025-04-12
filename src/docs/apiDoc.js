@@ -241,6 +241,26 @@ const options = {
               type: 'string',
               example: 'John Dow',
             },
+            lastName: {
+              required: true,
+              type: 'string',
+              example: 'Dow',
+            },
+            phone: {
+              required: false,
+              type: 'string',
+              example: '8001234567',
+            },
+            address: {
+              required: false,
+              type: 'string',
+              example: '123 Principal Street, Big City',
+            },
+            state: {
+              required: false,
+              type: 'string',
+              example: 'UT',
+            },
             email: {
               type: 'string',
               format: 'email',
