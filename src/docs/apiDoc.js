@@ -19,29 +19,29 @@ const options = {
       },
     ],
     components: {
-      securitySchemes: {
-        OAuth2GitHub: {
-          type: 'oauth2',
-          description: 'OAuth 2.0 using GitHub',
-          flows: {
-            authorizationCode: {
-              authorizationUrl: 'https://github.com/login/oauth/authorize',
-              tokenUrl: 'https://github.com/login/oauth/access_token',
-              redirectUrl: 'https://your-app.com/oauth2/callback',
-              scopes: {
-                'user:email': 'Read user profile information',
-              },
-            },
-          },
-        },
-        // BearerAuth: {
-        //   type: 'http',
-        //   scheme: 'bearer',
-        //   bearerFormat: 'JWT', // GitHub returns an OAuth access token, not a JWT
-        //   description:
-        //     'Use the access token received from the server after GitHub login',
-        // },
-      },
+      // securitySchemes: {
+      //   OAuth2GitHub: {
+      //     type: 'oauth2',
+      //     description: 'OAuth 2.0 using GitHub',
+      //     flows: {
+      //       authorizationCode: {
+      //         authorizationUrl: 'https://github.com/login/oauth/authorize',
+      //         tokenUrl: 'https://github.com/login/oauth/access_token',
+      //         redirectUrl: 'https://your-app.com/oauth2/callback',
+      //         scopes: {
+      //           'user:email': 'Read user profile information',
+      //         },
+      //       },
+      //     },
+      //   },
+      //   // BearerAuth: {
+      //   //   type: 'http',
+      //   //   scheme: 'bearer',
+      //   //   bearerFormat: 'JWT', // GitHub returns an OAuth access token, not a JWT
+      //   //   description:
+      //   //     'Use the access token received from the server after GitHub login',
+      //   // },
+      // },
       schemas: {
         User: {
           type: 'object',
@@ -406,9 +406,16 @@ const options = {
     },
   },
   apis: ['./src/routes/*.js'],
-  security: [{ OAuth2GitHub: [] }],
+  // security: [{ OAuth2GitHub: [] }],
 };
 
 const swaggerSpec = swaggerJsDoc(options);
 
-module.exports = swaggerSpec;
+const swaggerUiOptions = {
+  customJs: '/plugins/top-bar-plugin.js',
+  swaggerOptions: {
+    plugins: [() => window.TopBarPlugin],
+  },
+};
+
+module.exports = { swaggerSpec, swaggerUiOptions };
